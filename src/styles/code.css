@@ -1,0 +1,21 @@
+#code{
+    display: flex;
+    max-width: 600px;
+    min-width: 300px;
+    height: 100vh;
+    position: relative;
+    padding: 10px;
+}
+pre{
+    background-color: #1E1E1E;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    white-space: pre-wrap;
+    cursor: text;
+    border-radius: 10px;
+    flex: 1;
+}
+#code-area{
+    flex: 1;
+    border-radius: 10px;
+    outline: 0;
+}

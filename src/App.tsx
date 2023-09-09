@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/code.css';
+import './styles/presets.css';
+import './styles/global.css';
+import './styles/dark.css';
+import './styles/pageView.css';
+import { Preset } from './components/Preset';
+import { PageView } from './components/PageView';
+import { CodeArea } from './components/CodeArea';
+import { ElementProvider } from './Redux/ElementContext';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <ElementProvider>
+        <Preset />
+        <PageView />
+      </ElementProvider>
+      <CodeArea />      
     </div>
   );
 }

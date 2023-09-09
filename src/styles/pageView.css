@@ -1,0 +1,9 @@
+#page-view{
+    flex: 1;
+    display: flex;
+    /* justify-content: center; */
+    /* position: relative; */
+}
+#page-view-body{
+    flex: 1
+}
