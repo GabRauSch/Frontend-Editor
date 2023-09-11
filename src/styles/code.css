@@ -1,21 +1,32 @@
 #code{
     display: flex;
+    flex-direction: column;
     max-width: 600px;
-    min-width: 300px;
+    min-width: 400px;
     height: 100vh;
     position: relative;
-    padding: 10px;
+    padding: 5px;
+    right: 0;
+}
+.code-section{
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    flex: 1;
+    display: flex;
 }
 pre{
-    background-color: #1E1E1E;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     white-space: pre-wrap;
     cursor: text;
-    border-radius: 10px;
-    flex: 1;
 }
 #code-area{
     flex: 1;
     border-radius: 10px;
     outline: 0;
+}
+.close-code{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff
 }

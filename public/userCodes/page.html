@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Site Pai</title>
+    <style>
+        #draggable {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            cursor: move;
+        }
+        .fuck{
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            z-index: 99;
+            position: absolute;
+
+        }
+        #dropzone {
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Site Pai</h1>
+    <div id="draggable" draggable="true" ondragstart="drag(event)">Arraste-me</div>
+    <html >
+        <style>
+            
+            #dropzone {
+                width: 100%;
+                height: 300px;
+                border: 2px dashed black;
+            }
+            @media (max-width: 600px) {
+                #dropzone{
+                    background-color: blue;
+                }
+            }
+        </style>
+        <body id="iframe">
+            <div  ondragover="allowDrop(event)">
+                <h1>Site Incorporado</h1>
+                <div id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+        </body>
+    </html>
+
+
+    <script>
+         function allowDrop(event) {
+            console.log('kajsdfkl')
+            event.preventDefault();
+        }
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggableElement = document.getElementById(data);
+            var dropzone = document.getElementById("dropzone");
+            
+            // Verifica se o elemento é o bloco azul
+            if (draggableElement.id === "draggable") {
+                dropzone.appendChild(draggableElement);
+            }
+        }
+    </script>
+</body>
+</html>

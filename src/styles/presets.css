@@ -9,29 +9,42 @@
     flex-direction: column;
     align-items: center;
     flex: 1;
-    font-size: 12px;
-    width: 100px;
+    font-size: 10px;
+    width: 70px;
     background-color: #555;
 }
-.add-buttonTEMP{
-    padding: 5px;
-    border: 1px solid #000;
+.element-draggable{
+    padding: 10px;
     border-radius: 10px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    gap: 10px;
+    transition: all ease .1s;
+}
+.element-draggable:hover{
+    background-color: #333;
 }
 
 .preset-option{
-    color: #fff;
+    color: #bbb;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 20px 10px;
+    padding: 20px 20px;
     width: 100%;
     background-color: #333;
     cursor: pointer;
 }
 .preset-option:hover{
-    background-color: red;
+    color: #fff;
+}
+.preset-option:hover .preset-option-image-area{
+    filter: invert() brightness(1);
 }
 
 .preset-option.active{
@@ -46,17 +59,59 @@
 
 .preset-option-image-area{
     text-align: center;
+    filter: invert() brightness(.8);
 }
 .preset-option-image-area img{
     width: 20px;
-    filter: invert();
 }
 .preset-content{
     background-color: #555;
-    width: 200px
+    width: 150px;
+    display: flex;
+    flex-direction: column;
 }
 .filler{
     background-color: #333;
     flex: 1;
     width: 100%;    
+}
+
+.preset-content-body{
+    padding: 10px;
+    color: #fff
+}
+.preset-search-bar{
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.preset-search-bar input{
+    background-color: #eee;
+    width: 100px;
+    outline: 0;
+    border: 0;
+}
+.preset-search-bar-icon img{
+    width: 10px;
+}
+.element-content-division{
+    border-top: 1px solid #333;
+    margin-top: 10px;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.preset-tool-image-area img{
+    user-select: none;
+    width: 15px;
+    filter: invert();
+}
+
+
+.close-preset{
+    position:  absolute;
+    bottom: 0;
+    right: 0;
 }

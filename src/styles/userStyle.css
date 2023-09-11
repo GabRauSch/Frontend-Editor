@@ -1,0 +1,45 @@
+:root{
+    --aside-left-width: 
+}
+
+.user-header-template{
+    min-height: 100px;
+    border: 1px dashed #888;
+    display: flex;
+    container-type: inline-size;
+    justify-content: center;
+}
+
+.user-main-template{
+    flex: 1;
+    padding: 20px;
+    border: 1px dashed #888;
+    display: flex;
+    container-type: inline-size;
+}
+.user-footer-template{
+    border: 1px dotted #888;
+    min-height: 100px;
+    padding: 20px;
+    display: flex;
+    container-type: inline-size;
+
+}
+
+
+.user-dragging-over{
+    background-color:  #E0FfE0
+}
+
+.user-container-template{
+    width: 1200px;
+    min-height: 10px;
+    border: 1px dashed #888;
+    container-type: inline-size;
+}
+
+@container (max-width: 1200px) {
+    .user-container-template{
+        flex: 1
+    }
+  }
