@@ -4,7 +4,7 @@ import './styles/global.css';
 import './styles/dark.css';
 import './styles/pageView.css';
 import { Preset } from './components/preset/Preset';
-import { PageView } from './components/PageView';
+import { PageView } from './components/pageView/PageView';
 import { CodeArea } from './components/CodeArea';
 import { ContextProvider } from './contexts/Context';
 import { BrowserRouter, Routes, Route, RouterProvider } from 'react-router-dom';

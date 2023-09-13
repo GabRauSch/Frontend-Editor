@@ -4,28 +4,27 @@
 
 .user-header-template{
     min-height: 100px;
-    border: 1px dashed #888;
     display: flex;
-    container-type: inline-size;
     justify-content: center;
+    align-items: center;
 }
 
 .user-main-template{
     flex: 1;
     padding: 20px;
-    border: 1px dashed #888;
     display: flex;
-    container-type: inline-size;
+    justify-content: center;
 }
 .user-footer-template{
-    border: 1px dotted #888;
     min-height: 100px;
     padding: 20px;
     display: flex;
-    container-type: inline-size;
-
+    justify-content: center;
 }
-
+.user-aside-template{
+    width: 200px;
+    justify-self: flex-end;
+}
 
 .user-dragging-over{
     background-color:  #E0FfE0
@@ -34,10 +33,21 @@
 .user-container-template{
     width: 1200px;
     min-height: 10px;
-    border: 1px dashed #888;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.user-div-template{
+    padding: 10px;
+    display: flex;
+    width: fit-content;
+}
+.user-input-template{
+    height: fit-content;
+}
+.user-visible-element{
     container-type: inline-size;
 }
-
 @container (max-width: 1200px) {
     .user-container-template{
         flex: 1

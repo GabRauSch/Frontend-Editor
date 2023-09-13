@@ -40,6 +40,7 @@
     background-color: #333;
     cursor: pointer;
 }
+
 .preset-option:hover{
     color: #fff;
 }
@@ -48,10 +49,13 @@
 }
 
 .preset-option.active{
+    color: #fff;
     background-color: #555;
 }
+.preset-option.active .preset-option-image-area{
+    filter: invert() brightness(1);
 
-
+}
 
 .preset-option.active + .preset-option{
     border-top-right-radius: 10px;
@@ -97,21 +101,38 @@
     width: 10px;
 }
 .element-content-division{
-    border-top: 1px solid #333;
+    border-top: 1px solid #fff;
     margin-top: 10px;
     padding: 10px 0;
     font-size: 14px;
+    user-select: none;
 }
-
 .preset-tool-image-area img{
     user-select: none;
     width: 15px;
     filter: invert();
 }
-
+.element-draggable{
+    font-size: 13px;
+}
 
 .close-preset{
     position:  absolute;
     bottom: 0;
     right: 0;
+}
+
+
+.element-content-title{
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.element-content-open-close{
+    filter: invert();
+}
+.element-content-open-close img{
+    width: 7px;
+    transform: rotate(90deg);
 }

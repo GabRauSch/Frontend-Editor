@@ -7,17 +7,15 @@
     position: relative;
     padding: 5px;
     right: 0;
+    color: #ccc;
+    font-family: monospace;
 }
 .code-section{
     background-color: #1E1E1E;
     border-radius: 10px;
     flex: 1;
     display: flex;
-}
-pre{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    white-space: pre-wrap;
-    cursor: text;
+    padding: 5px;
 }
 #code-area{
     flex: 1;
@@ -29,4 +27,31 @@ pre{
     bottom: 0;
     left: 0;
     color: #fff
+}
+
+#code-language{
+    font-size: 10px;
+    font-style: italic;
+    padding: 3px;
+    cursor: pointer;
+}
+.code-editor{
+    font-size: 14px;
+}
+
+.code-editor .css-tag-class{
+    color: #D7AB4C;
+}
+.code-editor .css-tag-id{
+    color: #2C6Ba7
+}
+.code-editor .css-attribute{
+    color: #7CDCFE;
+    margin-left: 20px;
+}
+.code-editor .css-value-string{
+    color: #CE916A;
+}
+.code-editor .css-value-number{
+    color: #B5CEA8;
 }

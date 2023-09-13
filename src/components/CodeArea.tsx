@@ -6,13 +6,14 @@ export const CodeArea = ()=>{
         code.style.display = 'none'
     }
     return (
-        <aside id="code" >
-            <div className="code-section">
+        <aside id="code" style={{display: 'none'}} >
+            <div className="code-section" >
                 <div className="pull"></div>
-                <pre>
-                    <code id="code-area" className="language-html" contentEditable="true">
-                    </code>
-                </pre>
+                <div className="code-editor">
+                    <div id="code-language">HTML</div>
+                    <div id="code-area" className="css" contentEditable="true">
+                    </div>
+                </div>
             </div>
             <div className="close-code" onClick={closeCodeArea}>close</div>
         </aside>

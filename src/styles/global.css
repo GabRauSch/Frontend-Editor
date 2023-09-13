@@ -41,3 +41,22 @@ body{
 .left{
     left: 0;
 }
+.dashed{
+    border: 1px dashed #999;
+}
+.selected-div{
+    background-color: #cfc;
+}
+/* @keyframes selected {
+    0%, 100%{
+        opacity: .3;
+    }
+    50%{
+        opacity: 1
+    }
+} */
+
+hr{
+    background-color: #fff;
+    color: #fff;
+}
