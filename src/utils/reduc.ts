@@ -1,8 +1,17 @@
-export const setElement = (dispatch: any, elementId: string)=>{
+export const setElement = (dispatch: any, elementId: number)=>{
     dispatch({
         type: "SET_ELEMENT",
         payload: {
             elementId
+        }
+    })
+}
+
+export const setElementHash = (dispatch: any, elementHash: string)=>{
+    dispatch({
+        type: "SET_ELEMENT_HASH",
+        payload: {
+            elementHash
         }
     })
 }
@@ -22,7 +31,7 @@ export const setElementClassList = (dispatch: any, classList: string[])=>{
         }
     })
 }
-export const setInnerHTML = (dispatch: any, innerHTML: string)=>{
+export const setInnerHTML = (dispatch: any, innerHTML: string | null)=>{
     dispatch({
         type: 'SET_INNER_HTML',
         payload: {
@@ -40,29 +49,49 @@ export const setCursor = (dispatch: any, cursor: any)=>{
     })
 }
 
-export const switchVisibility = (dispatch: any, visibility: boolean)=>{
+export const togleVisibility = (dispatch: any)=>{
     dispatch({
-        type: 'SWITCH_VISIBILITY',
+        type: 'TOGLE_VISIBILITY',
         payload: {
-            visibility
+            
         }
     })
 }
 
-export const createComputed = (dispatch: any, computed: {})=>{
-    dispatch({
-        type: 'ADD_COMPUTED',
-        payload: {
-            computed
-        }
-    })
-}
+
 
 export const createComponent = (dispatch: any, component: {})=>{
     dispatch({
-        type: 'ADD_COMPONENT',
+        type: 'CREATE_COMPONENT',
         payload: {
             component
         }
     })
+}
+
+export const setChildren = (dispatch: any, children: HTMLElement[] | null)=>{
+    dispatch({
+        type: 'SET_ELEMENT_CHILDREN',
+        payload: {
+            children
+        }
+    })
+}
+export const changeToComponent = (dispatch: any, id: number, name: string)=>{
+    dispatch({
+        type: 'CHANGE_TO_COMPONENT',
+        payload: {
+            id, name
+        }
+    })
+}
+
+export const addStyle = (dispatch: any, className: string, style: string)=>{
+    dispatch({
+        type: 'ADD_STYLE',
+        payload: {
+            className, style
+        }
+    })
+
 }

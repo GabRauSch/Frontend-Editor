@@ -1,15 +1,14 @@
-import { Editor } from "../../classes/Editor"
 import {useState, useContext, useRef, useEffect} from 'react';
-import { PresetOption } from './PresetOption/PresetOption'
-import { PresetTool } from "./PresetTool/PresetTool";
+import { PresetOption } from './PresetOption'
+import { PresetTool } from "./PresetTool";
 import { Context } from "../../contexts/Context";
-import { ElementDraggable } from "./ElementDraggable/ElementDraggable";
-import { PresetSearchBar } from "./PresetSearchBar/PresetSearchBar";
-import { appendElement,  changeSelectedElement,  closeOptions, closePreset, openOptions, removeSelectedElement, setElementId } from "../../utils/editor";
-import { setCursor, setElement, setElementClassList, setElementTag, setInnerHTML, switchVisibility } from "../../utils/reduc";
-import { ElementContent } from "./ElementContent/ElementContent";
-import { LayoutContent } from "./LayoutContent/LayoutContent";
-import { ComponentContent } from "./ComponentContent/ComponentContent";
+import { ElementDraggable } from "./ElementDraggable";
+import { PresetSearchBar } from "./PresetSearchBar";
+import { appendElement,  changeSelectedElement,  closeOptions, closePreset, createElementHash, openOptions, removeSelectedElement } from "../../utils/editor";
+import { addStyle, setChildren, setCursor, setElementClassList, setElementHash, setElementTag, setInnerHTML, togleVisibility } from "../../utils/reduc";
+import { ElementContent } from "./ElementContent";
+import { LayoutContent } from "./LayoutContent";
+import { ComponentContent } from "./ComponentContent";
 
 export const Preset = ()=>{
     const { state, dispatch } = useContext(Context);
@@ -40,76 +39,43 @@ export const Preset = ()=>{
 
         const visibility = vision === 'view';
 
-        switchVisibility(dispatch, visibility)
+        togleVisibility(dispatch)
         
         const allDivs = document.querySelectorAll(`.user-element`);
         allDivs.forEach((el)=>{
             vision === 'view' ? el.classList.remove('dashed') : el.classList.add('dashed')
         })
-    }
 
-    const handleClick = (e: React.MouseEvent, element: string, classList: string[])=>{
-        e.preventDefault();
-        const elementObject = document.createElement(element) as HTMLElement; 
-        const id = setElementId();
-        if(!elementObject.id){
-            elementObject.setAttribute('id', id.toString());
-        }        
-        
-        appendElement(e, elementObject, classList);
-        elementObject.addEventListener('click', (e)=>{
-            
-        closeOptions(e)
-        removeSelectedElement()
-        
-        switch(stateRef.current.cursor.type){
-            case 'cursor': // editor.openCode  
-            break;
-            case 'mouse-arrow':
-                if(elementObject.classList.contains('selected-div'))
-                elementObject.classList.remove('selected-div');
-            else 
-            elementObject.classList.add('selected-div')
-        break;
-        case 'expand':
-            break;
-            case 'replace':
-                break;
-            }
-            setElement(dispatch, elementObject.id)
-        })
-        
-        elementObject.addEventListener('contextmenu', (event)=>{
-            event.preventDefault();
-            const element = event.target as HTMLElement
-            
-            setElement(dispatch, element.id)
-            openOptions(event);
-            changeSelectedElement(element)
-        })
+        addStyle(dispatch, 'user-header-template', 'background-color: red')
+
     }
 
     const changeArea = (e: React.MouseEvent, area: string, id: string)=>{
         const active = document.querySelector('.active');
         active?.classList.remove('active');
 
-        console.log(active)
         
         const areaElement = document.getElementById(id);
         areaElement?.classList.add('active');
 
-        console.log('area element', areaElement)
 
         setPresetDisplay(area)
     }
     
-    const handleDragStart = (e: React.DragEvent, element: string, classList?: string[],  innerHTML?: string)=>{
+    const handleDragStart = (e: React.DragEvent, element: string, classList?: string[],  innerHTML?: string, children?: HTMLElement[])=>{
         setElementTag(dispatch, element);
         if(classList){
             setElementClassList(dispatch, classList)
         }
         if(innerHTML){
             setInnerHTML(dispatch, innerHTML)
+        } else{
+            setInnerHTML(dispatch, null)
+        }
+        if(children){
+            setChildren(dispatch, children)
+        } else{
+            setChildren(dispatch, null)
         }
     }
 
@@ -130,13 +96,10 @@ export const Preset = ()=>{
             </div>
             <div className="preset-content">
                 <ComponentContent display={presetDisplay === 'componentContent'? 'block': 'none'} 
-                    handleClick={handleClick} 
                     handleDragStart={handleDragStart}/>
-                <ElementContent display={presetDisplay === 'elementContent'? 'block': 'none'} 
-                    handleClick={handleClick} 
+                <ElementContent display={presetDisplay === 'elementContent'? 'block': 'none'}  
                     handleDragStart={handleDragStart} />
                 <LayoutContent display={presetDisplay === 'layoutContent'? 'block': 'none'} 
-                    handleClick={handleClick} 
                     handleDragStart={handleDragStart} /> 
                 {/* <TemplateContent /> */}
                 {/* <ActionContent /> */}

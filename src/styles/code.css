@@ -28,30 +28,75 @@
     left: 0;
     color: #fff
 }
-
+.code-class-name{
+    outline: 0;
+    border: 0;
+    width: fit-content;
+}
 #code-language{
     font-size: 10px;
     font-style: italic;
     padding: 3px;
     cursor: pointer;
 }
-.code-editor{
-    font-size: 14px;
+#css-code-class-style{
+    font-size: 13px;
 }
 
-.code-editor .css-tag-class{
+#code-content-attribute{
+}
+#code-class-name{
+    display: flex;
+    font-size: 13px;
+    justify-content: flex-start;
+}
+.code-text{
+    color: #ccc;
+    font-size: 13px;
+}
+.code-class-name{
     color: #D7AB4C;
+    font-size: 13px;
 }
-.code-editor .css-tag-id{
-    color: #2C6Ba7
+#code-class-content{
+    display: flex;
+    font-size: 13px;
 }
-.code-editor .css-attribute{
+.code-content-attribute{
     color: #7CDCFE;
-    margin-left: 20px;
+    font-size: 13px;
+    margin-left: 30px;
 }
-.code-editor .css-value-string{
+.code-content-value{
     color: #CE916A;
+    font-size: 13px;
 }
-.code-editor .css-value-number{
+.css-value-number{
     color: #B5CEA8;
+    font-size: 13px;
+}
+
+.component-style{
+    color: #fff
+}
+.code-editable{
+    outline: 0;
+}
+.code-editable{
+    width: max-content;
+    resize: none;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+}
+.code-content-attribute.code-editable{
+    width: auto;
+    box-sizing: border-box;
+    display: block;
+    min-width: 0
+}
+
+#suprassumo{
+    display: flex;
+    width: fit-content;
 }

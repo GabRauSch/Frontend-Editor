@@ -1,5 +1,3 @@
-import { Editor } from "../classes/Editor";
-import { setElement } from "./reduc";
 import {v4 as uuid4} from 'uuid';
 
 export const closePreset = ()=>{
@@ -7,7 +5,7 @@ export const closePreset = ()=>{
     preset.style.display = 'none'
 }
 
-export const appendElement = (e: React.MouseEvent, elementObject: HTMLElement, classList?: string[], area?: HTMLElement, innerHTML?: string) =>{
+export const appendElement = (e: React.MouseEvent, elementObject: HTMLElement, classList?: string[], area?: HTMLElement, innerHTML?: string, children?: HTMLElement[]) =>{
     if(!area){
         area = document.getElementById('page-view-body') as HTMLElement
     }
@@ -23,12 +21,17 @@ export const appendElement = (e: React.MouseEvent, elementObject: HTMLElement, c
     if(innerHTML){
         elementObject.innerHTML = innerHTML;
     }
+    if(children){
+        children.forEach((child)=>{
+            elementObject.appendChild(child)
+        })
+    }
 
     area.appendChild(elementObject)    
 }
-export const setElementId = ()=>{
-    const id = uuid4(); 
-    return id
+export const createElementHash = ()=>{
+    const hash = uuid4();
+    return hash.slice(0,8)
 }
 
 export const openOptions = (e: any)=>{
@@ -48,7 +51,6 @@ export const closeOptions= (e: any)=>{
 }
 
 export const changeSelectedElement = (element: HTMLElement)=>{
-    console.log('selected', element)
     const selected = document.querySelectorAll('.selected-div');
 
     selected.forEach((el)=>{

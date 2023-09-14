@@ -1,9 +1,9 @@
 import {useContext, useEffect, useRef, useState } from "react";
 import { Context } from "../../contexts/Context";
 import '../../styles/userStyle.css'
-import { appendElement, changeSelectedElement, closeOptions, openOptions, removeSelectedElement, setElementId } from "../../utils/editor";
-import { createComputed, setElement, setInnerHTML } from "../../utils/reduc";
-import { OptionsPanel } from "./OptionsPanel/OptionsPanel";
+import { appendElement, changeSelectedElement, closeOptions, createElementHash, openOptions, removeSelectedElement } from "../../utils/editor";
+import { createComponent, setElementHash, setInnerHTML } from "../../utils/reduc";
+import { OptionsPanel } from "./OptionsPanel";
 
 export const PageView = ()=>{
   const {state, dispatch } = useContext(Context)
@@ -30,25 +30,35 @@ export const PageView = ()=>{
     const target = e.target as HTMLElement;
 
     const element = document.createElement(state.element.elementTag as string)
-    const classList = state.element.classList as string[]
-    const innerHTML = state.element.innerHTML as string
-    
-    const id = setElementId();
-    if(!element.id){
-      element.setAttribute('id', id.toString());
+    const classList = state.element.classList as string[];
+    const innerHTML = state.element.innerHTML as string;
+    const children = state.element.children as HTMLElement[];
+
+    const hash = createElementHash();
+    if(!element.getAttribute('hash')){
+      element.setAttribute('hash', hash.toString());
     }
         
-    appendElement(e, element, classList, target, innerHTML);
-    createComputed(dispatch, {
-      id,
-      styles: '',
-      position: 0,
-      cssClasses: classList,
-      innerHTML: innerHTML
-    })
+    appendElement(e, element, classList, target, innerHTML, children);
     
     target.classList.remove('user-dragging-over');
-    setInnerHTML(dispatch, '')
+    const parentHash = target.getAttribute('hash')
+
+    setInnerHTML(dispatch, '');
+    const component = {
+      id: state.component.components.length + 1,
+      hash,
+      parentHash,
+      position: 0,
+      tag: element.tagName,
+      cloneSiblings: 0,
+      innerHTML: innerHTML,
+      isComponent: 0,
+      name: '',
+      props: null,
+      classList
+    }
+    createComponent(dispatch, component);
 
     element.addEventListener('click', (e)=>{
       closeOptions(e)
@@ -69,7 +79,7 @@ export const PageView = ()=>{
           case 'replace':
               break;
       }
-      setElement(dispatch, element.id)             
+      setElementHash(dispatch, element.getAttribute('hash') as string)          
     })
 
     element.addEventListener('contextmenu', (event)=>{
@@ -77,7 +87,7 @@ export const PageView = ()=>{
       const elementObject = event.target as HTMLElement
       changeSelectedElement(elementObject);      
       openOptions(event);
-      setElement(dispatch, elementObject.id);
+      setElementHash(dispatch, elementObject.getAttribute('hash') as string);
     })
   }
     return (

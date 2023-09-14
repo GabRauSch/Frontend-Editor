@@ -4,18 +4,18 @@ import { actionType } from '../types/action';
 import { elementInitialState, elementReducer, elementType } from '../reducers/elementReducer';
 import { parentInitialState, parentReducer, parentType } from '../reducers/parentReducer';
 import { cursorInitialState, cursorReducer, cursorType } from '../reducers/cursorReducer';
-import { computedInitialState, computedReducer, computedType } from '../reducers/computedReducer';
 import { cssClassesInitialState, cssClassesReducer, cssClassesType } from '../reducers/cssClassesReducer';
 import { componentInitialState, componentReducer, componentType } from '../reducers/componentsReducer';
+import { visibleInitialState, visibleReducer, visibleType } from '../reducers/visibleReducer';
 
 type initialStateType = {
     user: userType;
     element: elementType,
     parent: parentType,
     cursor: cursorType,
-    computed: computedType,
     cssClasses: cssClassesType,
     component: componentType
+    visible: visibleType
 }
 
 type contextType = {
@@ -28,9 +28,9 @@ const initialState = {
     element: elementInitialState,
     parent: parentInitialState,
     cursor: cursorInitialState,
-    computed: computedInitialState,
     cssClasses: cssClassesInitialState,
-    component: componentInitialState
+    component: componentInitialState,
+    visible: visibleInitialState
 }
 
 export const Context = createContext<contextType>({
@@ -43,9 +43,9 @@ const mainReducer = (state: initialStateType, action: actionType)=>({
     element: elementReducer(state.element, action),
     parent: parentReducer(state.parent, action),
     cursor: cursorReducer(state.cursor, action),
-    computed: computedReducer(state.computed, action),
     cssClasses: cssClassesReducer(state.cssClasses, action),
-    component: componentReducer(state.component, action)
+    component: componentReducer(state.component, action),
+    visible: visibleReducer(state.visible, action)
 })
 
 export const ContextProvider: React.FC<{children: ReactNode }> = ({children})=>{

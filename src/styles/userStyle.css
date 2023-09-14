@@ -2,12 +2,12 @@
     --aside-left-width: 
 }
 
-.user-header-template{
+/* .user-header-template{
     min-height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .user-main-template{
     flex: 1;
